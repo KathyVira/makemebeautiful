@@ -1,11 +1,10 @@
 const express = require('express');
-const passport = require('passport');
-const GoogleStratedy = require('passport-google-oauth20');
-
-// console.developers.google.com
+mongoose.connect(keys.mongoURI);
+require('./services/passport');
 
 const app = express();
-passport.use(new GoogleStratedy());
+
+require('./routes/authRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
